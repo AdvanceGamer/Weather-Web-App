@@ -1,4 +1,3 @@
-const API_KEY = "f379d9a1e5830049178862c4e1a89077";
 
 
 const DAYS_OF_THE_WEEK = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
@@ -7,20 +6,20 @@ let selectedCityText;
 let selectedCity;
 
 const getCitiesUsingGeolocation = async (searchText) => {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${API_KEY}`);
+    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${config.API_KEY}`);
     return response.json();
 }
 
 const getCurrentWeatherData = async ({ lat, lon, name: city }) => {
 
-    const url = lat & lon ? `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric` : `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    const url = lat & lon ? `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${config.API_KEY}&units=metric` : `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${config.API_KEY}&units=metric`;
     const response = await fetch(url);
     return response.json();
 }
 
 
 const getHourlyForecast = async ({ name: city }) => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${config.API_KEY}&units=metric`);
     const data = await response.json();
     console.log(data);
     return data.list.map(forecast => {
