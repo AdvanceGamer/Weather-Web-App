@@ -1,12 +1,45 @@
 let API_KEY;
-const getAPI_KEY = () => {
+let response;
+const getAPI_KEY = async () => {
     API_KEY = prompt("Please enter your openweather API_KEY");
-    while (API_KEY == null) {
-        alert("API_KEY cannot be empty");
-        getAPI_KEY();
+    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=25.452023&lon=80.543846&appid=${API_KEY}&units=metric`);
+    console.log("try");
+    console.log(response.json());
+    console.log(response.statusText);
+    // fun(response);
+    // function fun({main:{temp}}){
+    //     console.log(temp);      
+    // }
+    // error=false;
+    // console.log(error);
+    // if (response.statusText=="Unauthorized")
+    // {
+    //     alert("please enter a valid api key");
+    //    API_KEY=getAPI_KEY();
+    // }
+    // else{
+    //     alert("ok");
+    //     return API_KEY;
+    // }
+    while (response.statusText == "Unauthorized") {
+        alert("please enter a valid API_KEY");
+        API_KEY = prompt("Please enter your openweather API_KEY");
+        response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=25.452023&lon=80.543846&appid=${API_KEY}&units=metric`);
+        console.log("try");
+        console.log(response.json());
+        console.log(response.statusText);
     }
+    alert("API_KEY varified successfully");
+    loadForecastUsingGeolocation();
+
+    const searchInput = document.querySelector("#search");
+    searchInput.addEventListener("input", debounceSearch);
+    searchInput.addEventListener("change", handleCitySelection);
+
 }
 getAPI_KEY();
+
+
 const DAYS_OF_THE_WEEK = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 let selectedCityText;
@@ -136,7 +169,7 @@ const loadForecastUsingGeolocation = () => {
 }
 
 const loadData = async () => {
-
+    console.log("API_KEY=", API_KEY);
     const currentWeather = await getCurrentWeatherData(selectedCity);
     console.log("current weather", currentWeather);
     loadCurrentForecast(currentWeather);
@@ -196,12 +229,8 @@ const handleCitySelection = (event) => {
 
 const debounceSearch = debounce((event) => onSearchChange(event));
 
-document.addEventListener("DOMContentLoaded", async () => {
-    loadForecastUsingGeolocation();
+// document.addEventListener("DOMContentLoaded", async () => {
 
-    const searchInput = document.querySelector("#search");
-    searchInput.addEventListener("input", debounceSearch);
-    searchInput.addEventListener("change", handleCitySelection);
 
-    // console.log(currentWeather);
-})
+//     // console.log(currentWeather);
+// })
