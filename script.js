@@ -1,10 +1,10 @@
 let API_KEY;
-const getAPI_KEY=()=>{
-   API_KEY= prompt("Please enter your openweather API_KEY");
-  while(API_KEY==null){
-    alert("API_KEY cannot be empty");
-    getAPI_KEY();
-  }
+const getAPI_KEY = () => {
+    API_KEY = prompt("Please enter your openweather API_KEY");
+    while (API_KEY == null) {
+        alert("API_KEY cannot be empty");
+        getAPI_KEY();
+    }
 }
 getAPI_KEY();
 const DAYS_OF_THE_WEEK = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
@@ -13,7 +13,7 @@ let selectedCityText;
 let selectedCity;
 
 const getCitiesUsingGeolocation = async (searchText) => {
-    const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${API_KEY}`);
+    const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchText}&limit=5&appid=${API_KEY}`);
     return response.json();
 }
 
@@ -37,7 +37,7 @@ const getHourlyForecast = async ({ name: city }) => {
 
 
 const formatTemperature = (temp) => `${temp?.toFixed(1)}º`;
-const createIconUrl = (icon) => `http://openweathermap.org/img/wn/${icon}@2x.png`;
+const createIconUrl = (icon) => `https://openweathermap.org/img/wn/${icon}@2x.png`;
 const calculateDayWiseForecast = (hourlyForecast) => {
     let dayWiseForecast = new Map();
     for (let forecast of hourlyForecast) {
