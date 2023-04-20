@@ -1,6 +1,12 @@
-
-const API_KEY = config.API_KEY;
-
+let API_KEY;
+const getAPI_KEY=()=>{
+   API_KEY= prompt("Please enter your openweather API_KEY");
+  while(API_KEY==null){
+    alert("API_KEY cannot be empty");
+    getAPI_KEY();
+  }
+}
+getAPI_KEY();
 const DAYS_OF_THE_WEEK = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
 let selectedCityText;
