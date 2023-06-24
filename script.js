@@ -1,4 +1,4 @@
-let API_KEY = f379d9a1e5830049178862c4e1a89077;
+let API_KEY = 'f379d9a1e5830049178862c4e1a89077';
 // let response;
 // const getAPI_KEY = async () => {
 //     API_KEY = prompt("Please enter your openweather API_KEY");
