@@ -1,43 +1,28 @@
-let API_KEY;
-let response;
-const getAPI_KEY = async () => {
-    API_KEY = prompt("Please enter your openweather API_KEY");
-    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=25.452023&lon=80.543846&appid=${API_KEY}&units=metric`);
-    console.log("try");
-    console.log(response.json());
-    console.log(response.statusText);
-    // fun(response);
-    // function fun({main:{temp}}){
-    //     console.log(temp);      
-    // }
-    // error=false;
-    // console.log(error);
-    // if (response.statusText=="Unauthorized")
-    // {
-    //     alert("please enter a valid api key");
-    //    API_KEY=getAPI_KEY();
-    // }
-    // else{
-    //     alert("ok");
-    //     return API_KEY;
-    // }
-    while (response.statusText == "Unauthorized") {
-        alert("please enter a valid API_KEY");
-        API_KEY = prompt("Please enter your openweather API_KEY");
-        response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=25.452023&lon=80.543846&appid=${API_KEY}&units=metric`);
-        console.log("try");
-        console.log(response.json());
-        console.log(response.statusText);
-    }
-    alert("API_KEY varified successfully");
-    loadForecastUsingGeolocation();
+let API_KEY = f379d9a1e5830049178862c4e1a89077;
+// let response;
+// const getAPI_KEY = async () => {
+//     API_KEY = prompt("Please enter your openweather API_KEY");
+//     response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=25.452023&lon=80.543846&appid=${API_KEY}&units=metric`);
+//     console.log("try");
+//     console.log(response.json());
+//     console.log(response.statusText);
+//     while (response.statusText == "Unauthorized") {
+//         alert("please enter a valid API_KEY");
+//         API_KEY = prompt("Please enter your openweather API_KEY");
+//         response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=25.452023&lon=80.543846&appid=${API_KEY}&units=metric`);
+//         console.log("try");
+//         console.log(response.json());
+//         console.log(response.statusText);
+//     }
+//     alert("API_KEY varified successfully");
+//     loadForecastUsingGeolocation();
 
-    const searchInput = document.querySelector("#search");
-    searchInput.addEventListener("input", debounceSearch);
-    searchInput.addEventListener("change", handleCitySelection);
+//     const searchInput = document.querySelector("#search");
+//     searchInput.addEventListener("input", debounceSearch);
+//     searchInput.addEventListener("change", handleCitySelection);
 
-}
-getAPI_KEY();
+// }
+// getAPI_KEY();
 
 
 const DAYS_OF_THE_WEEK = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
