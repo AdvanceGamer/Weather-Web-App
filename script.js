@@ -15,11 +15,11 @@ let API_KEY = 'f379d9a1e5830049178862c4e1a89077';
 //         console.log(response.statusText);
 //     }
 //     alert("API_KEY varified successfully");
-//     loadForecastUsingGeolocation();
+    // loadForecastUsingGeolocation();
 
-//     const searchInput = document.querySelector("#search");
-//     searchInput.addEventListener("input", debounceSearch);
-//     searchInput.addEventListener("change", handleCitySelection);
+    // const searchInput = document.querySelector("#search");
+    // searchInput.addEventListener("input", debounceSearch);
+    // searchInput.addEventListener("change", handleCitySelection);
 
 // }
 // getAPI_KEY();
@@ -219,3 +219,9 @@ const debounceSearch = debounce((event) => onSearchChange(event));
 
 //     // console.log(currentWeather);
 // })
+
+loadForecastUsingGeolocation();
+
+const searchInput = document.querySelector("#search");
+searchInput.addEventListener("input", debounceSearch);
+searchInput.addEventListener("change", handleCitySelection);
